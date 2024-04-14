@@ -1,0 +1,17 @@
+<div class="flex flex-col">
+  <h1>New Invoice</h1>
+  <div class="flex flex-col">
+    <span>Bill From</span>
+    <mat-form-field class="max-w-[540px] w-full">
+      <mat-label>Enter your email</mat-label>
+      <input matInput
+             placeholder="email@example.com"
+             [formControl]="email"
+             (blur)="updateErrorMessage()"
+             required>
+      @if (email.invalid) {
+        <mat-error>{{errorMessage}}</mat-error>
+      }
+    </mat-form-field>
+  </div>
+</div>
