@@ -1,17 +1,17 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
+  private readonly platformId: object = inject(PLATFORM_ID);
+
   private changes$ = new BehaviorSubject<{ key: string; value: any }>({
     key: '',
     value: null,
   });
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   setItem<T>(key: string, value: T): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -24,17 +24,17 @@ export class LocalStorageService {
     }
   }
 
-  getItem<T>(key: string): T | null {
+  getItem<T>(key: string, defaultValue: T | null = null): T | null {
     if (isPlatformBrowser(this.platformId)) {
       try {
         const item = localStorage.getItem(key);
-        return item ? JSON.parse(item) : null;
+        return item ? JSON.parse(item) : defaultValue;
       } catch (e) {
         console.error('Error reading from localStorage', e);
-        return null;
+        return defaultValue;
       }
     }
-    return null;
+    return defaultValue;
   }
 
   removeItem(key: string): void {

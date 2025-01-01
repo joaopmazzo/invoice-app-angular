@@ -1,7 +1,7 @@
-<div class="flex flex-col h-screen">
+<div class="flex flex-col h-screen dark:bg-12">
   <header class="py-9 px-14 rounded-br-3xl custom-shadow">
     <p
-      class="text-headingM font-bold leading-headingM tracking-headingM text-08 !mb-0"
+      class="text-headingM font-bold leading-headingM tracking-headingM text-08 dark:text-11 !mb-0"
     >
       New Invoice
     </p>
@@ -170,25 +170,25 @@
       <div class="grid grid-cols-12 gap-6">
         <label
           for="itemName"
-          class="col-span-4 text-headingSVariant leading-headingSVariant tracking-headingSVariant text-07"
+          class="col-span-4 text-headingSVariant leading-headingSVariant tracking-headingSVariant text-07 dark:text-05"
         >
           Item Name
         </label>
         <label
           for="quantity"
-          class="col-span-2 text-headingSVariant leading-headingSVariant tracking-headingSVariant text-07"
+          class="col-span-2 text-headingSVariant leading-headingSVariant tracking-headingSVariant text-07 dark:text-05"
         >
           Qty.
         </label>
         <label
           for="price"
-          class="col-span-3 text-headingSVariant leading-headingSVariant tracking-headingSVariant text-07"
+          class="col-span-3 text-headingSVariant leading-headingSVariant tracking-headingSVariant text-07 dark:text-05"
         >
           Price
         </label>
         <label
           for="total"
-          class="col-span-2 text-headingSVariant leading-headingSVariant tracking-headingSVariant text-07"
+          class="col-span-2 text-headingSVariant leading-headingSVariant tracking-headingSVariant text-07 dark:text-05"
         >
           Total
         </label>
@@ -220,7 +220,7 @@
             [required]="true"
             [control]="getAddressControl(index, 'price')"
           />
-          <span class="col-span-2">valor</span>
+          <span class="col-span-2 dark:text-05">valor</span>
           <button
             class="text-06 hover:text-09"
             mat-mini-fab
@@ -233,7 +233,7 @@
         }
 
         <app-button
-          variant="light"
+          variant="light-variant"
           buttonText="+ Add New Item"
           class="col-span-12"
           (click)="addItemList()"

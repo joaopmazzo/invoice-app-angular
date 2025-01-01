@@ -1,4 +1,11 @@
-import { afterNextRender, Component, HostBinding, signal } from '@angular/core';
+import {
+  afterNextRender,
+  Component,
+  effect,
+  inject,
+  Injector,
+  signal,
+} from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
 import { LocalStorageService } from './service/local-storage.service';
@@ -9,24 +16,49 @@ import { LocalStorageService } from './service/local-storage.service';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'invoice-app-angular';
-  darkMode = signal<boolean>(false);
+  readonly title = 'invoice-app-angular';
 
-  @HostBinding('class.dark') get mode() {
-    return this.darkMode();
-  }
+  private readonly injector = inject(Injector);
+  private readonly localStorageService = inject(LocalStorageService);
 
-  constructor(private localStorageService: LocalStorageService) {
+  readonly darkMode = signal<boolean>(false);
+
+  constructor() {
     afterNextRender(() => {
-      this.localStorageService.watchStorage().subscribe(({ key, value }) => {
-        if (key === 'darkMode') {
-          this.darkMode.set(value ?? false);
-        }
-      });
+      this.initializeDarkMode();
+      this.setupDarkModeEffect();
+      this.watchLocalStorageChanges();
     });
   }
 
-  toggleDarkMode() {
-    this.localStorageService.setItem('darkMode', !this.darkMode());
+  toggleDarkMode(): void {
+    this.localStorageService.setItem('isDarkMode', !this.darkMode());
+  }
+
+  private initializeDarkMode(): void {
+    const storedDarkMode: boolean =
+      this.localStorageService.getItem('isDarkMode') ?? false;
+    this.darkMode.set(storedDarkMode);
+  }
+
+  private setupDarkModeEffect(): void {
+    effect(
+      () => {
+        this.handleThemeChange(this.darkMode());
+      },
+      { injector: this.injector }
+    );
+  }
+
+  private watchLocalStorageChanges(): void {
+    this.localStorageService.watchStorage().subscribe(({ key, value }) => {
+      if (key === 'isDarkMode') {
+        this.darkMode.set(value ?? false);
+      }
+    });
+  }
+
+  private handleThemeChange(isDarkMode: boolean): void {
+    document.documentElement.classList.toggle('dark', isDarkMode);
   }
 }

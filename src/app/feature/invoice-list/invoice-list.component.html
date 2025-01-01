@@ -1,6 +1,6 @@
 <mat-sidenav-container
   fullscreen
-  class="absolute top-0 right-0 bottom-0 left-0 font-Spartan"
+  class="absolute top-0 right-0 bottom-0 left-0 font-Spartan dark:bg-12"
 >
   <mat-sidenav #sidenav mode="over">
     <app-invoice-form />
@@ -11,12 +11,12 @@
         <div class="flex justify-between w-full">
           <div class="flex flex-col">
             <span
-              class="text-headingL font-bold leading-headingL tracking-headingL text-08"
+              class="text-headingL font-bold leading-headingL tracking-headingL text-08 dark:text-11"
             >
               Invoices
             </span>
             <span
-              class="text-bodyVariant font-medium leading-bodyVariant tracking-bodyVariant text-06"
+              class="text-bodyVariant font-medium leading-bodyVariant tracking-bodyVariant text-06 dark:text-05"
             >
               No invoices
             </span>
@@ -27,7 +27,7 @@
               <span
                 [matMenuTriggerFor]="menu"
                 aria-label="filter by status"
-                class="flex itens-center gap-4 font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08 hover:cursor-pointer"
+                class="flex itens-center gap-4 font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08 dark:text-11 hover:cursor-pointer"
               >
                 Filter by status
                 <mat-icon class="text-01">expand_more</mat-icon>
@@ -35,7 +35,7 @@
               <mat-menu
                 #menu="matMenu"
                 xPosition="before"
-                class="mt-5 px-6 rounded-lg -mr-10"
+                class="mt-5 px-6 rounded-lg -mr-10 dark:bg-04"
               >
                 <section
                   [formGroup]="filterByStatus"
@@ -44,21 +44,21 @@
                 >
                   <mat-checkbox color="primary" formControlName="draft">
                     <span
-                      class="font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08"
+                      class="font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08 dark:text-11"
                     >
                       Draft
                     </span>
                   </mat-checkbox>
                   <mat-checkbox color="primary" formControlName="pending">
                     <span
-                      class="font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08"
+                      class="font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08 dark:text-11"
                     >
                       Pending
                     </span>
                   </mat-checkbox>
                   <mat-checkbox color="primary" formControlName="paid">
                     <span
-                      class="font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08"
+                      class="font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08 dark:text-11"
                     >
                       Paid
                     </span>
@@ -81,12 +81,12 @@
 
           <div>
             <h1
-              class="text-headingM font-bold leading-headingM tracking-headingM text-08"
+              class="text-headingM font-bold leading-headingM tracking-headingM text-08 dark:text-11"
             >
               There is nothing here
             </h1>
             <span
-              class="text-bodyVariant font-medium leading-bodyVariant tracking-bodyVariant text-06"
+              class="text-bodyVariant font-medium leading-bodyVariant tracking-bodyVariant text-06 dark:text-05"
             >
               Create an invoice by clicking the <br />
               <strong>New Invoice</strong> button and get started
