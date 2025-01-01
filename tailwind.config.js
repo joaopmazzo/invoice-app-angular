@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
@@ -13,12 +14,12 @@ module.exports = {
         "07": "#7e88c3",
         "08": "#0c0e16",
         "09": "#ec5757",
-        "10": "#FF9797",
-        "11": "#F8F8FB",
-        "12": "#141625",
+        10: "#FF9797",
+        11: "#F8F8FB",
+        12: "#141625",
       },
       fontFamily: {
-        Spartan: ["League Spartan", "sans-serif"]
+        Spartan: ["League Spartan", "sans-serif"],
       },
       fontSize: {
         headingL: "36px",
@@ -26,7 +27,7 @@ module.exports = {
         headingS: "15px",
         headingSVariant: "15px",
         body: "13px",
-        bodyVariant: "13px"
+        bodyVariant: "13px",
       },
       lineHeight: {
         headingL: "33px",
@@ -34,7 +35,7 @@ module.exports = {
         headingS: "24px",
         headingSVariant: "15px",
         body: "18px",
-        bodyVariant: "15px"
+        bodyVariant: "15px",
       },
       letterSpacing: {
         headingL: "-1px",
@@ -42,8 +43,8 @@ module.exports = {
         headingS: "-0.25px",
         headingSVariant: "-0.25px",
         body: "-0.1px",
-        bodyVariant: "-0.25px"
-      }
+        bodyVariant: "-0.25px",
+      },
     },
   },
   plugins: [],
