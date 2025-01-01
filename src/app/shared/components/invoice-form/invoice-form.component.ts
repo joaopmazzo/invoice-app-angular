@@ -18,18 +18,17 @@ import { ButtonComponent } from '../button/button.component';
 import { InputFieldComponent } from '../input-field/input-field.component';
 
 @Component({
-  selector: 'app-invoice-form',
-  standalone: true,
-  imports: [
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    InputFieldComponent,
-    ButtonComponent,
-  ],
-  templateUrl: './invoice-form.component.html',
+    selector: 'app-invoice-form',
+    imports: [
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InputFieldComponent,
+        ButtonComponent,
+    ],
+    templateUrl: './invoice-form.component.html'
 })
 export class InvoiceFormComponent {
   @ViewChild('scrollContainer') private scrollContainer!: ElementRef;

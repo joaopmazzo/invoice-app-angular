@@ -11,20 +11,19 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { InvoiceFormComponent } from '../../shared/components/invoice-form/invoice-form.component';
 
 @Component({
-  selector: 'app-invoice-list',
-  standalone: true,
-  imports: [
-    MatSidenavModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatMenuModule,
-    MatButtonModule,
-    ButtonComponent,
-    MatCheckboxModule,
-    InvoiceFormComponent
-  ],
-  templateUrl: './invoice-list.component.html',
+    selector: 'app-invoice-list',
+    imports: [
+        MatSidenavModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatMenuModule,
+        MatButtonModule,
+        ButtonComponent,
+        MatCheckboxModule,
+        InvoiceFormComponent
+    ],
+    templateUrl: './invoice-list.component.html'
 })
 export class InvoiceListComponent {
   sidebarVisible: boolean = false;

@@ -4,10 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-button',
-  standalone: true,
-  imports: [MatIconModule, MatButtonModule],
-  templateUrl: './button.component.html',
+    selector: 'app-button',
+    imports: [MatIconModule, MatButtonModule],
+    templateUrl: './button.component.html'
 })
 export class ButtonComponent {
   @Input() type: string = 'button';

@@ -8,17 +8,16 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-field',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './input-field.component.html',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputFieldComponent),
-      multi: true,
-    },
-  ],
+    selector: 'app-input-field',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './input-field.component.html',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => InputFieldComponent),
+            multi: true,
+        },
+    ]
 })
 export class InputFieldComponent implements ControlValueAccessor, OnInit {
   @Input() fieldName: string = '';
