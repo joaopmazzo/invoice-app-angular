@@ -1,8 +1,8 @@
-<mat-sidenav-container fullscreen class="absolute top-0 right-0 bottom-0 left-0 font-Spartan">
-  <mat-sidenav
-    #sidenav
-    mode="over"
-  >
+<mat-sidenav-container
+  fullscreen
+  class="absolute top-0 right-0 bottom-0 left-0 font-Spartan"
+>
+  <mat-sidenav #sidenav mode="over">
     <app-invoice-form />
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,7 +21,7 @@
               No invoices
             </span>
           </div>
-    
+
           <div class="flex flex-row gap-10 items-center">
             <div>
               <span
@@ -29,7 +29,8 @@
                 aria-label="filter by status"
                 class="flex itens-center gap-4 font-Spartan text-headingS font-bold leading-headingS tracking-headingS text-08 hover:cursor-pointer"
               >
-                Filter by status <mat-icon class="text-01">expand_more</mat-icon>
+                Filter by status
+                <mat-icon class="text-01">expand_more</mat-icon>
               </span>
               <mat-menu
                 #menu="matMenu"
@@ -65,14 +66,19 @@
                 </section>
               </mat-menu>
             </div>
-    
-            <app-button (click)="sidenav.toggle()" />
+
+            <app-button
+              iconSrc="../../../../assets/icon-plus.svg"
+              iconAlt="Plus icon"
+              buttonText="New Invoice"
+              (click)="sidenav.toggle()"
+            />
           </div>
         </div>
-    
+
         <div class="h-full flex flex-col gap-16 items-center text-center mt-36">
           <img src="../../../assets/illustration-empty.svg" alt="" />
-    
+
           <div>
             <h1
               class="text-headingM font-bold leading-headingM tracking-headingM text-08"
