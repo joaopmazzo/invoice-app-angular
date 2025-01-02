@@ -1,38 +1,40 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { afterNextRender, Component, inject } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
-import { ButtonComponent } from '../../shared/components/button/button.component';
+import { LocalStorageService } from '../../service/local-storage.service';
 import { InvoiceFormComponent } from '../../shared/components/invoice-form/invoice-form.component';
+import { InvoiceListHeaderComponent } from './components/invoice-list-header/invoice-list-header.component';
 
 @Component({
-    selector: 'app-invoice-list',
-    imports: [
-        MatSidenavModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        MatMenuModule,
-        MatButtonModule,
-        ButtonComponent,
-        MatCheckboxModule,
-        InvoiceFormComponent
-    ],
-    templateUrl: './invoice-list.component.html'
+  selector: 'app-invoice-list',
+  imports: [
+    MatSidenavModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    InvoiceFormComponent,
+    InvoiceListHeaderComponent,
+  ],
+  templateUrl: './invoice-list.component.html',
 })
 export class InvoiceListComponent {
-  sidebarVisible: boolean = false;
+  private readonly _localStorageService = inject(LocalStorageService);
 
-  filterByStatus = this._formBuilder.group({
-    draft: false,
-    pending: false,
-    paid: false,
-  });
+  data: any = null;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor() {
+    afterNextRender(() => {
+      const mockedData = this._localStorageService.getItem('mockedData');
+      this.data = mockedData;
+    });
+  }
 }
