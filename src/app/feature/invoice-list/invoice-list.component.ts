@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject } from '@angular/core';
+import { afterNextRender, Component, inject, signal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { LocalStorageService } from '../../service/local-storage.service';
 import { InvoiceFormComponent } from '../../shared/components/invoice-form/invoice-form.component';
+import { InvoiceCardComponent } from './components/invoice-card/invoice-card.component';
 import { InvoiceListHeaderComponent } from './components/invoice-list-header/invoice-list-header.component';
 
 @Component({
@@ -23,18 +24,19 @@ import { InvoiceListHeaderComponent } from './components/invoice-list-header/inv
     MatCheckboxModule,
     InvoiceFormComponent,
     InvoiceListHeaderComponent,
+    InvoiceCardComponent,
   ],
   templateUrl: './invoice-list.component.html',
 })
 export class InvoiceListComponent {
   private readonly _localStorageService = inject(LocalStorageService);
 
-  data: any = null;
+  data = signal<any>(null);
 
   constructor() {
     afterNextRender(() => {
       const mockedData = this._localStorageService.getItem('mockedData');
-      this.data = mockedData;
+      this.data.set(mockedData);
     });
   }
 }
