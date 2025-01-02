@@ -10,6 +10,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
 import { LocalStorageService } from './service/local-storage.service';
 
+import * as jsonData from '../assets/data.json';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, MatSidenavModule],
@@ -17,6 +19,7 @@ import { LocalStorageService } from './service/local-storage.service';
 })
 export class AppComponent {
   readonly title = 'invoice-app-angular';
+  data: any = jsonData;
 
   private readonly injector = inject(Injector);
   private readonly localStorageService = inject(LocalStorageService);
@@ -28,6 +31,8 @@ export class AppComponent {
       this.initializeDarkMode();
       this.setupDarkModeEffect();
       this.watchLocalStorageChanges();
+
+      this.localStorageService.setItem('mockedData', this.data.default);
     });
   }
 
