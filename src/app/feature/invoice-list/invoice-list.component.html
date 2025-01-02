@@ -8,7 +8,10 @@
   <mat-sidenav-content>
     <main class="absolute w-full font-Spartan">
       <div class="mx-auto max-w-[720px] w-full mt-20">
-        <app-invoice-list-header (sidenavToggle)="sidenav.toggle()" />
+        <app-invoice-list-header
+          (sidenavToggle)="sidenav.toggle()"
+          [invoiceListSize]="this.data()?.length ?? 0"
+        />
 
         @if (this.data() && this.data().length > 0) {
         <div class="mt-16 flex flex-col gap-4">

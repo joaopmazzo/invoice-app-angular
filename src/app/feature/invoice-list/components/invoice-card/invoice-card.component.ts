@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { StatusIndicatorComponent } from '../../../../shared/components/status-indicator/status-indicator.component';
 
 @Component({
@@ -7,6 +8,8 @@ import { StatusIndicatorComponent } from '../../../../shared/components/status-i
   templateUrl: './invoice-card.component.html',
 })
 export class InvoiceCardComponent {
+  private router = inject(Router);
+
   @Input() invoiceId!: number;
   @Input() invoiceDate!: string;
   @Input() invoiceClientName!: string;
@@ -28,5 +31,9 @@ export class InvoiceCardComponent {
       style: 'currency',
       currency: 'USD',
     }).format(currency);
+  }
+
+  navigateToInvoiceDetails(invoiceId: number | bigint): void {
+    this.router.navigate(['invoice/', invoiceId]);
   }
 }

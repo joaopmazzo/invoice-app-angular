@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -27,6 +27,8 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 export class InvoiceListHeaderComponent {
   private _formBuilder = inject(FormBuilder);
 
+  @Input() invoiceListSize: number = 0;
+
   @Output() sidenavToggle = new EventEmitter<void>();
 
   filterByStatus = this._formBuilder.group({
@@ -34,6 +36,12 @@ export class InvoiceListHeaderComponent {
     pending: false,
     paid: false,
   });
+
+  getTotalInvoiceText(): string {
+    return this.invoiceListSize > 0
+      ? `There are ${this.invoiceListSize} total invoices`
+      : `No invoices`;
+  }
 
   emitSidenavToggle() {
     this.sidenavToggle.emit();
