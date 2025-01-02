@@ -17,6 +17,9 @@ module.exports = {
         10: "#FF9797",
         11: "#F8F8FB",
         12: "#141625",
+        "status-paid": "#33D69F",
+        "status-pending": "#FF8F00",
+        "status-draft": "#373B53",
       },
       fontFamily: {
         Spartan: ["League Spartan", "sans-serif"],
