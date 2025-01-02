@@ -1,6 +1,6 @@
 <mat-sidenav-container
   fullscreen
-  class="absolute top-0 right-0 bottom-0 left-0 font-Spartan dark:bg-12"
+  class="absolute top-0 right-0 bottom-0 left-0 font-Spartan bg-11 dark:bg-12"
 >
   <mat-sidenav #sidenav mode="over">
     <app-invoice-form />
@@ -10,6 +10,19 @@
       <div class="mx-auto max-w-[720px] w-full mt-20">
         <app-invoice-list-header (sidenavToggle)="sidenav.toggle()" />
 
+        @if (this.data() && this.data().length > 0) {
+        <div class="mt-16 flex flex-col gap-4">
+          @for (invoice of this.data(); track $index) {
+          <app-invoice-card
+            [invoiceId]="invoice.id"
+            [invoiceDate]="invoice.invoiceDate"
+            [invoiceClientName]="invoice.clientName"
+            [invoiceTotalPrice]="invoice.totalPrice"
+            [invoiceStatus]="invoice.status"
+          />
+          }
+        </div>
+        } @else {
         <div class="h-full flex flex-col gap-16 items-center text-center mt-36">
           <img src="../../../assets/illustration-empty.svg" alt="" />
 
@@ -27,6 +40,7 @@
             </span>
           </div>
         </div>
+        }
       </div>
     </main>
   </mat-sidenav-content>
